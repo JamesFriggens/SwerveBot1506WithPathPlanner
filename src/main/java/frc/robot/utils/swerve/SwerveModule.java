@@ -4,7 +4,7 @@ import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
-
+import edu.wpi.first.wpilibj.Timer;
 import frc.lib.math.Conversions;
 import frc.lib.util.CTREModuleState;
 import frc.robot.Constants;
@@ -43,6 +43,7 @@ public class SwerveModule {
 
         /* Angle Motor Config */
         this.angleMotor = new TalonFX(moduleConstants.angleMotorID);
+        Timer.delay(0.5);
         configAngleMotor();
 
         this.lastAngle = getState().angle.getDegrees();

@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.drivetrain.INSANEPATHcommand;
 import frc.robot.commands.drivetrain.RunPathPlannerTrajectory2;
 import frc.robot.commands.drivetrain.SwerveTeleop;
 import frc.robot.subsystems.SwerveDrivetrain;
@@ -72,6 +73,6 @@ public class RobotContainer {
   }
 
   public Command getAutonomousCommand() {
-    return new RunPathPlannerTrajectory2(drivetrain, tr_test_1, true);
+    return new INSANEPATHcommand(drivetrain, "INSANEPATH");
   }
 }

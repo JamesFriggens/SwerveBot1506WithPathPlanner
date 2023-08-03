@@ -35,7 +35,7 @@ public class SwerveTeleop extends CommandBase {
         // double rAxis = -controller.getRightX();
 
         double yAxis = -controller.getRawAxis(1);
-        double xAxis = -controller.getRawAxis(0);
+        double xAxis = controller.getRawAxis(0);
         double rAxis = -controller.getRawAxis(2);
         
         /* Deadbands */

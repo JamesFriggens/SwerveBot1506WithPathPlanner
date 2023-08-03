@@ -1,9 +1,14 @@
 package frc.robot.subsystems;
 
+import java.util.HashMap;
+
 import com.ctre.phoenix.sensors.Pigeon2;
 import com.ctre.phoenix.sensors.PigeonIMU;
+import com.pathplanner.lib.auto.PIDConstants;
+import com.pathplanner.lib.auto.SwerveAutoBuilder;
 
 import frc.robot.Constants;
+import frc.robot.Constants.Auton;
 import frc.robot.utils.swerve.SwerveModule;
 
 import edu.wpi.first.math.geometry.Pose2d;
@@ -19,6 +24,7 @@ import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
@@ -75,7 +81,7 @@ public class SwerveDrivetrain extends SubsystemBase {
 
     /* Gyro */
     public void zeroGyro() {
-        this.gyro.setYaw(0);
+        this.gyro.setYaw(180);
     }
 
     private double optimizeGyro (double degrees) {
@@ -158,6 +164,19 @@ public class SwerveDrivetrain extends SubsystemBase {
         SmartDashboard.putData(this.field);
         // SmartDashboard.putData("ANGLE PID", data);
         // SmartDashboard.putData("DRIVE PID", data);
+    }
+
+    public SwerveAutoBuilder getAutoBuilder(HashMap<String, Command> eventMap){
+        return new SwerveAutoBuilder(
+            this::getPose, 
+            this::resetOdometry, 
+            Constants.SwerveDrivetrain.SWERVE_KINEMATICS, 
+            new PIDConstants(Constants.Auton.PX_CONTROLLER.getP(), Constants.Auton.PX_CONTROLLER.getI(), Constants.Auton.PX_CONTROLLER.getD()), 
+            new PIDConstants(Auton.THETA_CONTROLLER.getP(), Auton.THETA_CONTROLLER.getI(), Auton.THETA_CONTROLLER.getD()),
+            this::setModuleStates,
+            eventMap, 
+            true,
+            this);
     }
 
     @Override
