@@ -25,6 +25,7 @@ import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
@@ -183,5 +184,17 @@ public class SwerveDrivetrain extends SubsystemBase {
     public void periodic() {
         this.swerveOdometry.update(this.getYaw(), getModulePositions());
         this.field.setRobotPose(this.swerveOdometry.getPoseMeters());
+
+        for (SwerveModule module : swerveModules) {
+            SmartDashboard.putNumber("Module CANCoder" + module.moduleNumber, module.getCanCoder().getDegrees());
+        }
+    }
+
+    public CommandBase resetModuleToAbsolute() {
+        return runOnce(() -> {
+            for (SwerveModule module : swerveModules) {
+                module.resetToAbsolute();
+            }
+        });
     }
 }

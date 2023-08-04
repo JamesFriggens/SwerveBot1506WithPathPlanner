@@ -43,7 +43,7 @@ public class SwerveModule {
 
         /* Angle Motor Config */
         this.angleMotor = new TalonFX(moduleConstants.angleMotorID);
-        Timer.delay(0.5);
+        Timer.delay(2.0);
         configAngleMotor();
 
         this.lastAngle = getState().angle.getDegrees();
@@ -79,7 +79,7 @@ public class SwerveModule {
         this.lastAngle = angle;
     }
 
-    private void resetToAbsolute() {
+    public void resetToAbsolute() {
         double absolutePosition = Conversions.degreesToFalcon(this.getCanCoder().getDegrees() - angleOffset, Constants.SwerveDrivetrain.ANGLE_GEAR_RATIO);
         this.angleMotor.setSelectedSensorPosition(absolutePosition);
     }

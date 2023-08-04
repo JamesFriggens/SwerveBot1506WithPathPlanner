@@ -24,7 +24,7 @@ public class RobotContainer {
 
   /* Buttons */
   private final JoystickButton zeroGyro = new JoystickButton(driver, PS4Controller.Button.kCircle.value);
-  // private final JoystickButton shoot = new JoystickButton(driver, PS4Controller.Button.kTriangle.value);
+  private final JoystickButton triangle = new JoystickButton(driver, PS4Controller.Button.kTriangle.value);
 
   /* Subsystems */
   private final SwerveDrivetrain drivetrain = new SwerveDrivetrain();
@@ -49,6 +49,7 @@ public class RobotContainer {
 
   private void configureButtonBindings() {
     zeroGyro.onTrue(c_zeroGyro);
+    triangle.onTrue(drivetrain.resetModuleToAbsolute());
     // new JoystickButton(driver, PS4Controller.Button.kTriangle.value).whileHeld(c_shoot);
     // shoot.whileHeld(c_shoot);
   }
@@ -73,6 +74,7 @@ public class RobotContainer {
   }
 
   public Command getAutonomousCommand() {
-    return new INSANEPATHcommand(drivetrain, "INSANEPATH");
+    return new INSANEPATHcommand(drivetrain, "AroundTheChargingStation");
+    //return new INSANEPATHcommand(drivetrain, "INSANEPATH");
   }
 }

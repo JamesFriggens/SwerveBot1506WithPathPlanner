@@ -31,7 +31,7 @@ public final class Constants {
         public static final double CLOSED_LOOP_RAMP = 0.0;
 
         public static final double DRIVE_GEAR_RATIO = (6.0 / 1.0);  // 6.86:1
-        public static final double ANGLE_GEAR_RATIO = (12.0 / 1.0); // 12.8:1
+        public static final double ANGLE_GEAR_RATIO = (15.43 / 1.0); // 12.8:1
 
         public static final SwerveDriveKinematics SWERVE_KINEMATICS = new SwerveDriveKinematics(
             new Translation2d(  WHEEL_BASE / 2.0,   TRACK_WIDTH / 2.0),
@@ -77,8 +77,8 @@ public final class Constants {
         public static final NeutralMode DRIVE_NEUTRAL_MODE = NeutralMode.Brake;
 
         /* Motor Inverts */
-        public static final boolean DRIVE_MOTOR_INVERTED = false;
-        public static final boolean ANGLE_MOTOR_INVERTED = true;
+        public static final boolean DRIVE_MOTOR_INVERTED = true;
+        public static final boolean ANGLE_MOTOR_INVERTED = false;
 
         /* Angle Encoder Invert */
         public static final boolean CAN_CODER_INVERTED = false;
@@ -89,7 +89,8 @@ public final class Constants {
             public static final int DRIVE_MOTOR_ID  = 1;
             public static final int ANGLE_MOTOR_ID  = 2;
             public static final int CAN_CODER_ID    = 3;
-            public static final double ANGLE_OFFSET = 45.791;
+            // 225.703
+            public static final double ANGLE_OFFSET = 268.945;
             public static final SwerveModuleConstants constants = 
                 new SwerveModuleConstants(DRIVE_MOTOR_ID, ANGLE_MOTOR_ID, CAN_CODER_ID, ANGLE_OFFSET);
         }
@@ -99,7 +100,7 @@ public final class Constants {
             public static final int DRIVE_MOTOR_ID  = 5;
             public static final int ANGLE_MOTOR_ID  = 4;
             public static final int CAN_CODER_ID    = 6;
-            public static final double ANGLE_OFFSET = 138.867;
+            public static final double ANGLE_OFFSET = 320.977;
             public static final SwerveModuleConstants constants = 
                 new SwerveModuleConstants(DRIVE_MOTOR_ID, ANGLE_MOTOR_ID, CAN_CODER_ID, ANGLE_OFFSET);
         }
@@ -109,7 +110,7 @@ public final class Constants {
             public static final int DRIVE_MOTOR_ID  = 11;
             public static final int ANGLE_MOTOR_ID  = 10;
             public static final int CAN_CODER_ID    = 12;
-            public static final double ANGLE_OFFSET = 218.320;
+            public static final double ANGLE_OFFSET = 37.178 ;
             public static final SwerveModuleConstants constants = 
                 new SwerveModuleConstants(DRIVE_MOTOR_ID, ANGLE_MOTOR_ID, CAN_CODER_ID, ANGLE_OFFSET);
         }
@@ -119,7 +120,7 @@ public final class Constants {
             public static final int DRIVE_MOTOR_ID  = 7;
             public static final int ANGLE_MOTOR_ID  = 9;
             public static final int CAN_CODER_ID    = 8;
-            public static final double ANGLE_OFFSET = 88.682;
+            public static final double ANGLE_OFFSET = 268.945;
             public static final SwerveModuleConstants constants = 
                 new SwerveModuleConstants(DRIVE_MOTOR_ID, ANGLE_MOTOR_ID, CAN_CODER_ID, ANGLE_OFFSET);
         }
